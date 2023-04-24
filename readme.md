@@ -1,4 +1,4 @@
-A small python script to remind you of your bedtime by turning off your computer after a countdown runs out.
+A small python program to remind you of your bedtime by turning off your computer after a countdown runs out.
 
 I tend to get stuck in social vr games waaaayyy past my bedtime so i thouoght i'd fix that with a little program.
 Since I can imagine I'm not the only one with this problem I thought I'd publush it here. 
