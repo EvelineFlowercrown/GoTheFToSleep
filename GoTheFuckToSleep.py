@@ -3,6 +3,7 @@ from playsound import playsound
 import subprocess
 import threading
 from PIL import Image, ImageTk
+from os import system
 
 
 class ToggleButton(tk.Button):
@@ -55,8 +56,7 @@ class Countdown:
         self.toggle_btn.place(relx=0.5, rely=0.4, anchor='center')
 
         # Timer selection buttons
-        times = [('4 hours', 240), ('3 hours', 180), ('2 hours', 120), ('1 hour', 60), ('45 minutes', 45),
-                 ('30 minutes', 1)]
+        times = [('4 hours', 240), ('3 hours', 180), ('2 hours', 120), ('1 hour', 60), ('45 minutes', 45), ('30 minutes', 30)]
         for i, (text, mins) in enumerate(times):
             btn = tk.Button(self.master, text=text, font=('Arial', 14),
                             command=lambda mins=mins: self.start_countdown(mins))
@@ -119,7 +119,7 @@ class Countdown:
         self.update_time_label()
 
     def shutdown(self):
-        subprocess.call(['Shutdown -s -f -t 1'])
+        system("shutdown /s /f")
 
 
 if __name__ == '__main__':
