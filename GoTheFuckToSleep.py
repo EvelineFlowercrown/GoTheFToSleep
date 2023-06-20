@@ -56,7 +56,7 @@ class Countdown:
         self.toggle_btn.place(relx=0.5, rely=0.4, anchor='center')
 
         # Timer selection buttons
-        times = [('4 hours', 240), ('3 hours', 180), ('2 hours', 120), ('1 hour', 60), ('45 minutes', 45), ('30 minutes', 30)]
+        times = [('4 hours', 240), ('3 hours', 180), ('2 hours', 120), ('1 hour', 60), ('30 minutes', 30), ('15 minutes', 15)]
         for i, (text, mins) in enumerate(times):
             btn = tk.Button(self.master, text=text, font=('Arial', 14),
                             command=lambda mins=mins: self.start_countdown(mins))
