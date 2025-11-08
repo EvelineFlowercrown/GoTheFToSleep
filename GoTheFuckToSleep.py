@@ -36,8 +36,8 @@ class Countdown:
         self.stop_button = None
         self.time_label = None
         self.master = master
-        self.master.geometry('400x400')
-        self.master.title('Go the fuck to sleep')
+        self.master.geometry("400x400")
+        self.master.title("Go the fuck to sleep")
         self.minutes = 0
         self.seconds = 0
         self.isMuted = True
@@ -46,28 +46,46 @@ class Countdown:
 
     def create_widgets(self):
         # Countdown timer label
-        self.time_label = tk.Label(self.master, text='00:00:00', font=('Arial', 40))
-        self.time_label.place(relx=0.5, rely=0.1, anchor='center')
+        self.time_label = tk.Label(self.master, text="00:00:00", font=("Arial", 40))
+        self.time_label.place(relx=0.5, rely=0.1, anchor="center")
 
         # Stop button
-        self.stop_button = tk.Button(self.master, text='Stop', font=('Arial', 20), command=self.stop_countdown)
-        self.stop_button.place(relx=0.9, rely=0.4, anchor='center')
+        self.stop_button = tk.Button(
+            self.master, text="Stop", font=("Arial", 20), command=self.stop_countdown
+        )
+        self.stop_button.place(relx=0.9, rely=0.4, anchor="center")
 
         # Add 15 minutes button
-        self.snooze_button = tk.Button(self.master, text='+15', font=('Arial', 20), command=self.add_15_minutes)
-        self.snooze_button.place(relx=0.1, rely=0.4, anchor='center')
+        self.snooze_button = tk.Button(
+            self.master, text="+15", font=("Arial", 20), command=self.add_15_minutes
+        )
+        self.snooze_button.place(relx=0.1, rely=0.4, anchor="center")
 
         # Add mute button
-        self.toggle_btn = ToggleButton(root, "Icons/on.png", "Icons/off.png", command=self.mute)
-        self.toggle_btn.place(relx=0.5, rely=0.4, anchor='center')
+        self.toggle_btn = ToggleButton(
+            root, "icons/on.png", "icons/off.png", command=self.mute
+        )
+        self.toggle_btn.place(relx=0.5, rely=0.4, anchor="center")
 
         # Timer selection buttons
-        times = [('4 hours', 240), ('3 hours', 180), ('2 hours', 120), ('1 hour', 60), ('30 minutes', 30),
-                 ('15 minutes', 15)]
+        times = [
+            ("4 hours", 240),
+            ("3 hours", 180),
+            ("2 hours", 120),
+            ("1 hour", 60),
+            ("30 minutes", 30),
+            ("15 minutes", 15),
+        ]
         for i, (text, mins) in enumerate(times):
-            btn = tk.Button(self.master, text=text, font=('Arial', 14),
-                            command=lambda mins=mins: self.start_countdown(mins))
-            btn.place(relx=0.2 + i % 3 * 0.3, rely=0.7 + int(i / 3) * 0.15, anchor='center')
+            btn = tk.Button(
+                self.master,
+                text=text,
+                font=("Arial", 14),
+                command=lambda mins=mins: self.start_countdown(mins),
+            )
+            btn.place(
+                relx=0.2 + i % 3 * 0.3, rely=0.7 + int(i / 3) * 0.15, anchor="center"
+            )
 
     def mute(self):
         self.isMuted = not self.isMuted
@@ -103,19 +121,19 @@ class Countdown:
 
     def audioReminder(self):
         if self.minutes == 30 and self.seconds == 1:
-            playsound('sounds/30.wav', False)
+            playsound("sounds/30.wav", False)
         if self.minutes == 15 and self.seconds == 1:
-            playsound('sounds/15.wav', False)
+            playsound("sounds/15.wav", False)
         if self.minutes == 5 and self.seconds == 0:
-            playsound('sounds/5.wav', False)
+            playsound("sounds/5.wav", False)
         if self.minutes == 0 and self.seconds == 10:
-            playsound('sounds/countdown.wav', False)
+            playsound("sounds/countdown.wav", False)
 
     def update_time_label(self):
         hours = str(self.minutes // 60).zfill(2)
         mins = str(self.minutes % 60).zfill(2)
         secs = str(self.seconds).zfill(2)
-        self.time_label.config(text=f'{hours}:{mins}:{secs}')
+        self.time_label.config(text=f"{hours}:{mins}:{secs}")
 
     def stop_countdown(self):
         self.running = False
@@ -127,10 +145,10 @@ class Countdown:
 
     def shutdown(self):
         # system("shutdown /s /f")
-        subprocess.call(['shutdown', '-s', '-f', '-t', '1'])
+        subprocess.call(["shutdown", "-s", "-f", "-t", "1"])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     root = tk.Tk()
     countdown = Countdown(root)
     root.mainloop()
